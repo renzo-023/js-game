@@ -110,6 +110,12 @@ button:disabled {
     background-color: gray;
 }
 
+#container__imagem-nos{
+    width: 370px;
+    
+    
+}
+
 @media screen and (max-width: 1250px) {
 
     h1 {
@@ -126,7 +132,11 @@ button:disabled {
     }
 
     .container__imagem-pessoa {
-        display: none;
+        position: absolute;
+        display: flex;
+        width: 72px;
+        top: 170px;
+        right: 12px;
     }
 
     .container__conteudo {
@@ -136,5 +146,15 @@ button:disabled {
 
     .container__informacoes {
         padding: 1rem
+    }
+}
+
+@media screen and (max-width: 1250px){ 
+   #container__imagem-nos{
+    position: absolute;
+        display: flex;
+        width: 90px;
+        top: 240px;
+        right: 52px;
     }
 }
