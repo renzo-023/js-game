@@ -7,7 +7,7 @@ console.log(numeroSecreto);
 function exibirTextoNaTela(tag, texto) {
   let titulo = document.querySelector(tag);
   titulo.innerHTML = texto;
-  responsiveVoice.speak(texto, "Brazilian Portuguese Female", { rate: 1.2 });
+  // responsiveVoice.speak(texto, "Brazilian Portuguese Female", { rate: 1.2 });
 }
 
 function exibirMensagemInicial() {
@@ -21,22 +21,39 @@ function desabilitarNovoJogo() {
 
 exibirMensagemInicial();
 
+let foto = document.querySelector("img");
+
+function limpar() {
+  foto.id = "";
+  foto.src = "./img/brendox.png";
+  foto.style.display = "";
+}
+
 function verificarChute() {
   let chute = document.querySelector("input").value;
-  if (chute == numeroSecreto) {
-    exibirTextoNaTela("h1", "Acertou!");
-    let palavraTentativa = tentativas > 1 ? "tentativas" : "tentativa";
-    let mensagemTentativas = `Você descobriu o número secreto com ${tentativas} ${palavraTentativa}!`;
-    exibirTextoNaTela("p", mensagemTentativas);
-    document.getElementById("reiniciar").removeAttribute("disabled");
-  } else {
-    if (chute > numeroSecreto) {
-      exibirTextoNaTela("p", "Você errou! Tente um número menor!");
-    } else {
-      exibirTextoNaTela("p", "Você errou! Tente um número maior!");
-    }
-    tentativas++;
+  if (chute == "23032024") {
+    alert("código secreto ativado!");
+    exibirTextoNaTela("h1", "EU TE AMO AMANDA <3");
+    foto.src = "./img/nos.jpg";
+    foto.id = "container__imagem-nos";
     limparCampo();
+  } else {
+    if (chute == numeroSecreto) {
+      exibirTextoNaTela("h1", "Acertou!");
+      let palavraTentativa = tentativas > 1 ? "tentativas" : "tentativa";
+      let mensagemTentativas = `Você descobriu o número secreto com ${tentativas} ${palavraTentativa}!`;
+      exibirTextoNaTela("p", mensagemTentativas);
+      document.getElementById("reiniciar").removeAttribute("disabled");
+      foto.style.display = "none";
+    } else {
+      if (chute > numeroSecreto) {
+        exibirTextoNaTela("p", "Você errou! Tente um número menor!");
+      } else {
+        exibirTextoNaTela("p", "Você errou! Tente um número maior!");
+      }
+      tentativas++;
+      limparCampo();
+    }
   }
 }
 
@@ -68,4 +85,5 @@ function reiniciarJogo() {
   tentativas = 1;
   exibirMensagemInicial();
   desabilitarNovoJogo();
+  limpar();
 }
